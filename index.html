@@ -347,6 +347,121 @@ option { background: #1a0a2e; }
 }
 .modal-cancel { background: transparent; border: 1px solid var(--border); color: var(--text3); }
 .modal-confirm { background: rgba(255,80,80,0.2); border: 1px solid rgba(255,80,80,0.5); color: rgba(255,120,120,0.9); }
+
+/* ─── IMPORT BANNER ─── */
+.import-zone {
+  margin: 0 16px 4px;
+  border: 1px dashed rgba(126,184,255,0.35);
+  border-radius: var(--radius);
+  background: rgba(126,184,255,0.04);
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
+}
+.import-zone:active, .import-zone.drag-over {
+  border-color: var(--accent2); background: rgba(126,184,255,0.1);
+}
+.import-zone-icon { font-size: 22px; flex-shrink: 0; }
+.import-zone-text { flex: 1; }
+.import-zone-title {
+  font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--accent2); text-transform: uppercase;
+}
+.import-zone-sub { font-size: 13px; color: var(--text3); margin-top: 2px; }
+.import-zone input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0;
+}
+
+.import-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(126,184,255,0.12); border: 1px solid rgba(126,184,255,0.35);
+  border-radius: 20px; padding: 4px 10px 4px 8px;
+  font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; color: var(--accent2); margin: 0 16px 10px;
+  cursor: default; width: fit-content;
+}
+.import-badge-x {
+  background: none; border: none; color: rgba(126,184,255,0.6);
+  cursor: pointer; font-size: 14px; padding: 0; line-height: 1;
+}
+.import-badge-x:hover { color: var(--accent2); }
+
+/* ─── PLAY SCREEN LAYOUT WITH SIDEBAR ─── */
+.play-body {
+  display: flex; flex: 1; overflow: hidden; position: relative;
+}
+.play-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* Character Sidebar */
+.char-sidebar {
+  width: 0; overflow: hidden; transition: width 0.3s ease;
+  border-left: 1px solid transparent; flex-shrink: 0;
+  background: rgba(14,8,24,0.97); backdrop-filter: blur(16px);
+  display: flex; flex-direction: column;
+}
+.char-sidebar.open {
+  width: 260px; border-left-color: var(--border);
+}
+@media (max-width: 500px) {
+  .char-sidebar.open { width: 220px; }
+}
+.sidebar-header {
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.sidebar-header-title {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+}
+.sidebar-close {
+  background: none; border: none; color: var(--text3); font-size: 18px;
+  cursor: pointer; padding: 2px 4px; line-height: 1;
+}
+.sidebar-body { flex: 1; overflow-y: auto; padding: 12px 14px 20px; }
+
+.sidebar-name {
+  font-family: 'Cinzel', serif; font-size: 15px; color: var(--text);
+  margin-bottom: 2px;
+}
+.sidebar-sub {
+  font-family: 'Rajdhani', sans-serif; font-size: 11px; letter-spacing: 0.12em;
+  color: var(--accent3); text-transform: uppercase; margin-bottom: 14px;
+}
+.sidebar-section {
+  margin-bottom: 14px;
+}
+.sidebar-section-title {
+  font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; color: var(--text3); text-transform: uppercase;
+  margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid var(--border);
+}
+.sidebar-field { margin-bottom: 7px; }
+.sidebar-field-label {
+  font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; color: var(--text3); text-transform: uppercase;
+}
+.sidebar-field-val {
+  font-size: 13px; color: var(--text2); line-height: 1.5; margin-top: 1px;
+}
+.sidebar-pill {
+  display: inline-block; font-family: 'Rajdhani', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  padding: 2px 8px; border-radius: 10px; border: 1px solid var(--border);
+  color: var(--text3); margin: 2px 2px 2px 0;
+}
+.sidebar-pill.quirk { border-color: rgba(180,120,255,0.4); color: var(--accent); }
+.sidebar-pill.secret { border-color: rgba(255,120,196,0.4); color: var(--accent3); }
+
+/* Sidebar toggle btn in play header */
+.char-btn {
+  background: rgba(180,120,255,0.1); border: 1px solid var(--border2);
+  border-radius: 20px; color: var(--text2); font-family: 'Rajdhani', sans-serif;
+  font-size: 12px; font-weight: 600; padding: 5px 10px; cursor: pointer;
+  letter-spacing: 0.06em; transition: all 0.2s; white-space: nowrap;
+}
+.char-btn:active, .char-btn.active { background: rgba(180,120,255,0.2); color: var(--accent); border-color: var(--accent); }
 </style>
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjgwIiBmaWxsPSIjMGUwODE4Ii8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciIGN4PSI1MCUiIGN5PSI0MCUiIHI9IjYwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNiNDc4ZmYiIHN0b3Atb3BhY2l0eT0iMC40Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBlMDgxOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjgwIiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPCEtLSBCb29rIHNoYXBlIC0tPgogIDxyZWN0IHg9IjEyMCIgeT0iMTQwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjIzMiIgcng9IjgiIGZpbGw9IiMyYTE1NDUiIHN0cm9rZT0iI2I0NzhmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHJlY3QgeD0iMjcyIiB5PSIxNDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMjMyIiByeD0iOCIgZmlsbD0iIzFkMTAzMCIgc3Ryb2tlPSIjN2ViOGZmIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8IS0tIFNwaW5lIC0tPgogIDxyZWN0IHg9IjIzNiIgeT0iMTQwIiB3aWR0aD0iNDAiIGhlaWdodD0iMjMyIiByeD0iNCIgZmlsbD0iIzNhMWE2MCIvPgogIDwhLS0gTGluZXMgb24gcGFnZXMgLS0+CiAgPGxpbmUgeDE9IjE0MCIgeTE9IjE4NSIgeDI9IjIyMCIgeTI9IjE4NSIgc3Ryb2tlPSIjYjQ3OGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1vcGFjaXR5PSIwLjUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjA1IiB4Mj0iMjIwIiB5Mj0iMjA1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjI1IiB4Mj0iMjIwIiB5Mj0iMjI1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjQ1IiB4Mj0iMjAwIiB5Mj0iMjQ1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMjUiLz4KICA8bGluZSB4MT0iMjkyIiB5MT0iMTg1IiB4Mj0iMzcyIiB5Mj0iMTg1IiBzdHJva2U9IiM3ZWI4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyMDUiIHgyPSIzNzIiIHkyPSIyMDUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyMjUiIHgyPSIzNzIiIHkyPSIyMjUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyNDUiIHgyPSIzNTIiIHkyPSIyNDUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4yNSIvPgogIDwhLS0gU3RhciAtLT4KICA8dGV4dCB4PSIyNTYiIHk9IjQyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0OCIgZmlsbD0iI2YwYzA2MCIgb3BhY2l0eT0iMC44NSI+4pymPC90ZXh0Pgo8L3N2Zz4K">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjgwIiBmaWxsPSIjMGUwODE4Ii8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciIGN4PSI1MCUiIGN5PSI0MCUiIHI9IjYwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNiNDc4ZmYiIHN0b3Atb3BhY2l0eT0iMC40Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBlMDgxOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjgwIiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPCEtLSBCb29rIHNoYXBlIC0tPgogIDxyZWN0IHg9IjEyMCIgeT0iMTQwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjIzMiIgcng9IjgiIGZpbGw9IiMyYTE1NDUiIHN0cm9rZT0iI2I0NzhmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHJlY3QgeD0iMjcyIiB5PSIxNDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMjMyIiByeD0iOCIgZmlsbD0iIzFkMTAzMCIgc3Ryb2tlPSIjN2ViOGZmIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8IS0tIFNwaW5lIC0tPgogIDxyZWN0IHg9IjIzNiIgeT0iMTQwIiB3aWR0aD0iNDAiIGhlaWdodD0iMjMyIiByeD0iNCIgZmlsbD0iIzNhMWE2MCIvPgogIDwhLS0gTGluZXMgb24gcGFnZXMgLS0+CiAgPGxpbmUgeDE9IjE0MCIgeTE9IjE4NSIgeDI9IjIyMCIgeTI9IjE4NSIgc3Ryb2tlPSIjYjQ3OGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1vcGFjaXR5PSIwLjUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjA1IiB4Mj0iMjIwIiB5Mj0iMjA1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjI1IiB4Mj0iMjIwIiB5Mj0iMjI1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMzUiLz4KICA8bGluZSB4MT0iMTQwIiB5MT0iMjQ1IiB4Mj0iMjAwIiB5Mj0iMjQ1IiBzdHJva2U9IiNiNDc4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuMjUiLz4KICA8bGluZSB4MT0iMjkyIiB5MT0iMTg1IiB4Mj0iMzcyIiB5Mj0iMTg1IiBzdHJva2U9IiM3ZWI4ZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW9wYWNpdHk9IjAuNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyMDUiIHgyPSIzNzIiIHkyPSIyMDUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyMjUiIHgyPSIzNzIiIHkyPSIyMjUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIyOTIiIHkxPSIyNDUiIHgyPSIzNTIiIHkyPSIyNDUiIHN0cm9rZT0iIzdlYjhmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC4yNSIvPgogIDwhLS0gU3RhciAtLT4KICA8dGV4dCB4PSIyNTYiIHk9IjQyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0OCIgZmlsbD0iI2YwYzA2MCIgb3BhY2l0eT0iMC44NSI+4pymPC90ZXh0Pgo8L3N2Zz4K">
@@ -437,6 +552,24 @@ option { background: #1a0a2e; }
       <span class="topnav-title">NEW STORY</span>
       <div style="width:70px"></div>
     </div>
+
+    <!-- Import zone -->
+    <div id="import-zone" class="import-zone" onclick="document.getElementById('sheet-file-input').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+      <div class="import-zone-icon">📄</div>
+      <div class="import-zone-text">
+        <div class="import-zone-title">Import Character Sheet</div>
+        <div class="import-zone-sub">Upload a .txt sheet to pre-fill fields — tap or drag &amp; drop</div>
+      </div>
+      <input type="file" id="sheet-file-input" accept=".txt,text/plain" onchange="handleSheetImport(this)">
+    </div>
+    <div id="import-badge-wrap" style="display:none;">
+      <div class="import-badge">
+        <span>📄</span>
+        <span id="import-badge-name"></span>
+        <button class="import-badge-x" onclick="clearImport()" title="Remove import">✕</button>
+      </div>
+    </div>
+
     <div class="creator-body">
       <div class="field-group">
         <label class="field-label">Story Title</label>
@@ -449,6 +582,24 @@ option { background: #1a0a2e; }
       <div class="field-group">
         <label class="field-label">Character Name</label>
         <input class="field-input" id="c-charname" placeholder="Your character's name">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div class="field-group">
+          <label class="field-label">Gender</label>
+          <input class="field-input" id="c-gender" placeholder="e.g. Male">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Age</label>
+          <input class="field-input" id="c-age" placeholder="e.g. 16">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Height</label>
+          <input class="field-input" id="c-height" placeholder="e.g. 5'7&quot;">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Quirk / Powers</label>
+        <textarea class="field-textarea" id="c-quirk" placeholder="Describe their quirk or abilities — registered classification, true nature, limitations..."></textarea>
       </div>
       <div class="field-group">
         <label class="field-label">Character Appearance</label>
@@ -507,10 +658,22 @@ option { background: #1a0a2e; }
     <div class="play-header">
       <button class="play-back" onclick="exitPlay()">←</button>
       <div class="play-title" id="play-title">Story</div>
+      <button class="char-btn" id="char-toggle-btn" onclick="toggleSidebar()" style="display:none;">✦ Character</button>
       <button class="nav-btn" onclick="showScreen('settings')" style="font-size:16px;padding:6px 10px;">⚙</button>
     </div>
-    <div class="scene-panel" id="scene-panel"></div>
-    <div class="choices-panel" id="choices-panel"></div>
+    <div class="play-body">
+      <div class="play-main">
+        <div class="scene-panel" id="scene-panel"></div>
+        <div class="choices-panel" id="choices-panel"></div>
+      </div>
+      <div class="char-sidebar" id="char-sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-header-title">Character</span>
+          <button class="sidebar-close" onclick="toggleSidebar()">✕</button>
+        </div>
+        <div class="sidebar-body" id="sidebar-body"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Delete modal -->
@@ -536,6 +699,8 @@ const STATE = {
   stories: [],
   activeStoryId: null,
   deleteTargetId: null,
+  importedSheet: null,   // { filename, text, parsed }
+  sidebarOpen: false,
 };
 
 const EXPLICIT_LABELS = ['Tasteful', 'Suggestive', 'Ecchi', 'Explicit', 'Adult'];
@@ -727,6 +892,10 @@ function createStory() {
   const title = document.getElementById('c-title').value.trim();
   const world = document.getElementById('c-world').value.trim();
   const charName = document.getElementById('c-charname').value.trim();
+  const gender = document.getElementById('c-gender').value.trim();
+  const age = document.getElementById('c-age').value.trim();
+  const height = document.getElementById('c-height').value.trim();
+  const quirk = document.getElementById('c-quirk').value.trim();
   const appearance = document.getElementById('c-appearance').value.trim();
   const personality = document.getElementById('c-personality').value.trim();
   const premise = document.getElementById('c-premise').value.trim();
@@ -743,6 +912,10 @@ function createStory() {
     title,
     world,
     charName,
+    gender,
+    age,
+    height,
+    quirk,
     appearance,
     personality,
     premise,
@@ -751,6 +924,7 @@ function createStory() {
     explicitLevel: currentExplicit,
     explicitDesc: EXPLICIT_DESCS[currentExplicit-1],
     notes,
+    importedSheet: STATE.importedSheet ? STATE.importedSheet.text : null,
     history: [],
     sceneText: '',
     choices: [],
@@ -761,38 +935,50 @@ function createStory() {
   save();
 
   // Reset creator
-  document.getElementById('c-title').value='';
-  document.getElementById('c-world').value='';
-  document.getElementById('c-charname').value='';
-  document.getElementById('c-appearance').value='';
-  document.getElementById('c-personality').value='';
-  document.getElementById('c-premise').value='';
-  document.getElementById('c-notes').value='';
+  ['c-title','c-world','c-charname','c-gender','c-age','c-height','c-quirk',
+   'c-appearance','c-personality','c-premise','c-notes'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   selectedTones.clear();
   document.querySelectorAll('.tag-pick-btn').forEach(b=>b.classList.remove('sel','ecchi-t','dark-t'));
   document.getElementById('explicit-slider').value=2;
   document.getElementById('explicit-val').textContent='Suggestive';
   currentExplicit=2;
+  clearImport();
 
   playStory(story.id);
 }
 
 function buildSystemPrompt(story) {
   const toneStr = story.tones.length ? story.tones.join(', ') : 'balanced';
+  const charDetails = [
+    story.charName   ? `Name: ${story.charName}` : '',
+    story.gender     ? `Gender: ${story.gender}` : '',
+    story.age        ? `Age: ${story.age}` : '',
+    story.height     ? `Height: ${story.height}` : '',
+    story.appearance ? `Appearance: ${story.appearance}` : '',
+    story.quirk      ? `Quirk/Abilities: ${story.quirk}` : '',
+    story.personality? `Personality & Background: ${story.personality}` : '',
+  ].filter(Boolean).join('\n');
+
+  const sheetSection = story.importedSheet
+    ? `\nIMPORTED CHARACTER SHEET (treat as authoritative reference — all details, quirks, abilities, and relationships within take precedence):\n---\n${story.importedSheet}\n---\n`
+    : '';
+
   return `You are the narrator of an interactive CYOA (choose-your-own-adventure) story.
 
 STORY DETAILS:
 - Title: ${story.title}
 - World/Setting: ${story.world || 'Original setting'}
-- Character Name: ${story.charName || 'The protagonist'}
-- Appearance: ${story.appearance || 'Not specified'}
-- Personality & Background: ${story.personality || 'Not specified'}
 - Core Premise: ${story.premise}
 - Tone: ${toneStr}
 - Canon Strictness: ${story.canonStrictness}
 - Explicitness Level: ${story.explicitLevel}/5 — ${story.explicitDesc}
 ${story.notes ? '- Additional Notes: ' + story.notes : ''}
 
+CHARACTER:
+${charDetails || 'Not specified'}
+${sheetSection}
 NARRATIVE RULES — NON-NEGOTIABLE:
 1. Write ENTIRELY in second person ("you", "your") — never third person
 2. Match the tone precisely: ${toneStr}
@@ -804,10 +990,11 @@ NARRATIVE RULES — NON-NEGOTIABLE:
   'original world, no canon constraints'
 }
 5. Track ALL past events and choices with perfect consistency
-6. Keep scenes to 4-6 paragraphs — vivid, atmospheric, character-driven
-7. Choices must be genuinely distinct — different approaches, emotional stances, moral positions
-8. Write with genuine craft — specific sensory details, authentic dialogue, no generic descriptions
-9. Every single response MUST end with EXACTLY this JSON format and nothing after it:
+6. Reference the character's specific quirk, abilities, appearance, and personality naturally in the narrative
+7. Keep scenes to 4-6 paragraphs — vivid, atmospheric, character-driven
+8. Choices must be genuinely distinct — different approaches, emotional stances, moral positions
+9. Write with genuine craft — specific sensory details, authentic dialogue, no generic descriptions
+10. Every single response MUST end with EXACTLY this JSON format and nothing after it:
 {"scene": "narrative text using \\n\\n for paragraph breaks", "choices": ["choice A text", "choice B text", "choice C text", "choice D text"]}`;
 }
 
@@ -835,11 +1022,25 @@ function playStory(id) {
   const story = STATE.stories.find(s => s.id === id);
   if (!story) return;
   document.getElementById('play-title').textContent = story.title;
+
+  // Show character button if character data exists
+  const hasChar = story.charName || story.importedSheet;
+  const charBtn = document.getElementById('char-toggle-btn');
+  charBtn.style.display = hasChar ? 'block' : 'none';
+
+  // Close sidebar on new story load
+  STATE.sidebarOpen = false;
+  document.getElementById('char-sidebar').classList.remove('open');
+  charBtn.classList.remove('active');
+
+  // Render sidebar content
+  renderSidebar(story);
+
   showScreen('play');
   renderPlayScene(story);
   if (!story.started) {
     story.started = true;
-    sendToAI(story, null); // Get opening scene
+    sendToAI(story, null);
   }
 }
 
@@ -1046,6 +1247,180 @@ function showError(msg) {
   err.style.cssText = 'margin:16px;padding:14px;background:rgba(255,100,100,0.1);border:1px solid rgba(255,100,100,0.3);border-radius:8px;color:rgba(255,160,160,0.9);font-size:14px;font-family:Rajdhani,sans-serif;letter-spacing:0.04em;';
   err.textContent = '✗ ' + msg;
   panel.appendChild(err);
+}
+
+// ─── CHARACTER SHEET IMPORT ─────────────────────────────
+
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('import-zone').classList.add('drag-over');
+}
+function handleDragLeave(e) {
+  document.getElementById('import-zone').classList.remove('drag-over');
+}
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('import-zone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) processSheetFile(file);
+}
+function handleSheetImport(input) {
+  const file = input.files[0];
+  if (file) processSheetFile(file);
+  input.value = '';
+}
+
+function processSheetFile(file) {
+  if (!file.name.endsWith('.txt') && file.type !== 'text/plain') {
+    alert('Please upload a .txt file.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const text = e.target.result;
+    const parsed = parseCharacterSheet(text);
+    STATE.importedSheet = { filename: file.name, text, parsed };
+
+    // Pre-fill creator fields
+    if (parsed.name)        setFieldIfEmpty('c-charname', parsed.name);
+    if (parsed.gender)      setFieldIfEmpty('c-gender', parsed.gender);
+    if (parsed.age)         setFieldIfEmpty('c-age', parsed.age);
+    if (parsed.height)      setFieldIfEmpty('c-height', parsed.height);
+    if (parsed.appearance)  setFieldIfEmpty('c-appearance', parsed.appearance);
+    if (parsed.personality) setFieldIfEmpty('c-personality', parsed.personality);
+    if (parsed.quirk)       setFieldIfEmpty('c-quirk', parsed.quirk);
+    if (parsed.notes)       setFieldIfEmpty('c-notes', parsed.notes);
+
+    // Show badge, hide import zone
+    document.getElementById('import-zone').style.display = 'none';
+    document.getElementById('import-badge-wrap').style.display = 'block';
+    document.getElementById('import-badge-name').textContent = file.name;
+  };
+  reader.readAsText(file);
+}
+
+function setFieldIfEmpty(id, value) {
+  const el = document.getElementById(id);
+  if (el && !el.value.trim()) el.value = value;
+}
+
+function clearImport() {
+  STATE.importedSheet = null;
+  document.getElementById('import-zone').style.display = 'flex';
+  document.getElementById('import-badge-wrap').style.display = 'none';
+  document.getElementById('import-badge-name').textContent = '';
+}
+
+function parseCharacterSheet(text) {
+  // Extracts key fields from plain-text character sheets using flexible label matching
+  const get = (patterns) => {
+    for (const pat of patterns) {
+      const re = new RegExp(pat + '[:\\s]+([^\\n]{1,200})', 'im');
+      const m = text.match(re);
+      if (m) return m[1].trim();
+    }
+    return '';
+  };
+
+  const getBlock = (startPatterns, stopPatterns) => {
+    for (const startPat of startPatterns) {
+      const startRe = new RegExp(startPat + '[^\\n]*\\n([\\s\\S]{20,800}?)(?=' + stopPatterns.join('|') + '|$)', 'im');
+      const m = text.match(startRe);
+      if (m) return m[1].replace(/^[\s\-─=]+/gm, '').trim();
+    }
+    return '';
+  };
+
+  return {
+    name:        get(['name', 'character name', 'full name']),
+    gender:      get(['gender', 'sex']),
+    age:         get(['age']),
+    height:      get(['height']),
+    appearance:  getBlock(['appearance', 'looks', 'physical'], ['personality', 'quirk', 'abilities', 'notes', '─{4,}', '={4,}']),
+    personality: getBlock(['personality', 'character', 'traits'], ['quirk', 'abilities', 'notes', 'strength', '─{4,}', '={4,}']),
+    quirk:       getBlock(['quirk', 'powers', 'abilities', 'true classification'], ['strength', 'weakness', 'notes', 'personality', '─{4,}', '={4,}']),
+    notes:       getBlock(['notes', 'additional'], ['─{4,}', '={4,}', '$']),
+  };
+}
+
+// ─── SIDEBAR ─────────────────────────────────────────────
+
+function toggleSidebar() {
+  STATE.sidebarOpen = !STATE.sidebarOpen;
+  document.getElementById('char-sidebar').classList.toggle('open', STATE.sidebarOpen);
+  document.getElementById('char-toggle-btn').classList.toggle('active', STATE.sidebarOpen);
+}
+
+function renderSidebar(story) {
+  const body = document.getElementById('sidebar-body');
+  if (!story) { body.innerHTML = ''; return; }
+
+  let html = '';
+
+  if (story.charName) {
+    html += `<div class="sidebar-name">${story.charName}</div>`;
+  }
+  if (story.world) {
+    html += `<div class="sidebar-sub">${story.world}</div>`;
+  }
+
+  // Basic info
+  const basics = [
+    story.gender ? ['Gender', story.gender] : null,
+    story.age    ? ['Age', story.age] : null,
+    story.height ? ['Height', story.height] : null,
+  ].filter(Boolean);
+
+  if (basics.length) {
+    html += `<div class="sidebar-section"><div class="sidebar-section-title">Profile</div>`;
+    basics.forEach(([label, val]) => {
+      html += `<div class="sidebar-field"><div class="sidebar-field-label">${label}</div><div class="sidebar-field-val">${val}</div></div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (story.appearance) {
+    html += `<div class="sidebar-section">
+      <div class="sidebar-section-title">Appearance</div>
+      <div class="sidebar-field-val" style="font-size:12px;line-height:1.6;">${story.appearance.slice(0,220)}${story.appearance.length>220?'…':''}</div>
+    </div>`;
+  }
+
+  if (story.quirk) {
+    html += `<div class="sidebar-section">
+      <div class="sidebar-section-title">Quirk / Abilities</div>
+      <div class="sidebar-field-val" style="font-size:12px;line-height:1.6;">${story.quirk.slice(0,300)}${story.quirk.length>300?'…':''}</div>
+    </div>`;
+  }
+
+  if (story.personality) {
+    html += `<div class="sidebar-section">
+      <div class="sidebar-section-title">Personality</div>
+      <div class="sidebar-field-val" style="font-size:12px;line-height:1.6;">${story.personality.slice(0,220)}${story.personality.length>220?'…':''}</div>
+    </div>`;
+  }
+
+  // Tones
+  if (story.tones && story.tones.length) {
+    html += `<div class="sidebar-section"><div class="sidebar-section-title">Tone</div>`;
+    story.tones.forEach(t => {
+      html += `<span class="sidebar-pill">${t}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  if (story.importedSheet) {
+    html += `<div class="sidebar-section">
+      <div class="sidebar-section-title">Sheet Imported</div>
+      <div class="sidebar-field-val" style="font-size:11px;color:var(--accent2);">📄 Full character sheet active — AI narrator has complete reference.</div>
+    </div>`;
+  }
+
+  if (!html) {
+    html = `<div style="color:var(--text3);font-size:13px;font-style:italic;padding-top:8px;">No character details added.</div>`;
+  }
+
+  body.innerHTML = html;
 }
 
 // ─── BOOT ────────────────────────────────────────────────
